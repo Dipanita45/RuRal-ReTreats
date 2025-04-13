@@ -24,7 +24,7 @@ function sendNewsletterEmail(email) {
     user_email: email,
     to_email: email,
     subject: "🌟 Welcome to Our Travel Newsletter!",
-    message: `Hi there! 🎉\n\nThank you for subscribing to our exclusive travel newsletter! ✈️🌎\n\nYou’ll receive the latest travel deals, destination tips, and exciting offers. 🏖️\n\nClick the link below to complete your registration:\n\n🔗 [Complete Registration](#)\n\nHappy Travels! 🚀`,
+    message: `Hi there! 🎉\n\nThank you for subscribing to our exclusive travel newsletter! ✈️🌎\n\nYou'll receive the latest travel deals, destination tips, and exciting offers. 🏖️\n\nClick the link below to complete your registration:\n\n🔗 [Complete Registration](#)\n\nHappy Travels! 🚀`,
   };
   emailjs
     .send("service_n3pxpvu", "template_b6o5dqb", templateParams)
@@ -42,7 +42,7 @@ function showConfirmationMessage(email) {
         <div class="newsletter-popup">
             <h2>🎉 Subscription Confirmed!</h2>
             <p>Dear <b>${email}</b>, thank you for subscribing!<br>
-            You’ll receive an email with a registration form.</p>
+            You'll receive an email with a registration form.</p>
             <p>📧 Check your inbox and complete your signup.</p>
             <button onclick="closeConfirmation()">OK</button>
         </div>
@@ -236,7 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "Can I cancel or reschedule my bus/train ticket?":
       "Yes! Go to My Bookings, select your ticket, and choose Cancel or Reschedule. Cancellation fees may apply.",
     "What happens if my bus/train is delayed or canceled?":
-      "You’ll get real-time SMS/email updates. If it’s canceled, you can apply for a full refund or reschedule.",
+      "You'll get real-time SMS/email updates. If it's canceled, you can apply for a full refund or reschedule.",
     "How do I check my PNR status for train tickets?":
       "Enter your PNR number in our Check PNR Status section to see live updates.",
     "How do I book a car rental?":
@@ -374,40 +374,41 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   appendMessage("bot", "👋 Hi there! How can I assist you today?");
   showCategories();
-  window.addEventListener("scroll", function () {
-    let navbar = document.querySelector(".navbar");
-    if (window.scrollY > 50) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
-    }
-  });
 });
+
 document.addEventListener("DOMContentLoaded", function () {
   const menuToggle = document.getElementById("menu-toggle");
   const menuClose = document.getElementById("menu-close");
   const mobileMenu = document.getElementById("mobile-menu");
   const navLinks = document.querySelectorAll(".mobile-menu ul li a");
   const navbar = document.querySelector(".navbar");
+  
   menuToggle.addEventListener("click", () => {
     mobileMenu.classList.add("active");
   });
+  
   menuClose.addEventListener("click", () => {
     mobileMenu.classList.remove("active");
   });
+  
   navLinks.forEach((link) => {
     link.addEventListener("click", () => {
       mobileMenu.classList.remove("active");
     });
   });
+  
+  // Single scroll event for navbar
   window.addEventListener("scroll", function () {
     if (window.scrollY > 50) {
       navbar.classList.add("sticky");
+      navbar.classList.add("scrolled");
     } else {
       navbar.classList.remove("sticky");
+      navbar.classList.remove("scrolled");
     }
   });
 });
+
 document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.getElementById("search-input");
   const searchBtn = document.querySelector(".search-bar button");

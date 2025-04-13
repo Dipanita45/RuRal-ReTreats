@@ -10,10 +10,12 @@ html,
 body {
   margin: 0;
   padding: 0;
-
   width: 100% !important;
   height: 100% !important;
   overflow-x: hidden !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 a {
   text-decoration: none;
@@ -116,8 +118,9 @@ ul {
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   padding: 15px 20px;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   transition: all 0.3s ease-in-out;
   -webkit-backdrop-filter: blur(10px);
@@ -128,6 +131,13 @@ ul {
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  padding: 10px 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
 .nav-container {
   display: flex;
   align-items: center;
@@ -385,19 +395,18 @@ ul {
 }
 
 .hero-banner {
-  background-image: url("https://images.pexels.com/photos/994605/pexels-photo-994605.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  position: relative;
+  height: 80vh;
+  background: url("https://images.pexels.com/photos/1743392/pexels-photo-1743392.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   background-size: cover;
   background-position: center;
-  height: 75vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   text-align: center;
-  border-radius: 10px;
-  margin: 1.5rem 3rem 3rem;
+  color: white;
   overflow: hidden;
-  animation: fadeIn 1.5s ease-in-out;
+  margin-top: 80px; /* Add margin to account for fixed navbar */
 }
 
 .hero-banner .overlay {
@@ -474,7 +483,7 @@ ul {
 @media screen and (max-width: 1024px) {
   .hero-banner {
     height: 75vh;
-    margin: 1.5rem 2rem 3rem;
+    margin: 80px 2rem 3rem;
   }
 
   .hero-content h1 {
@@ -494,7 +503,7 @@ ul {
 @media screen and (max-width: 768px) {
   .hero-banner {
     height: 65vh;
-    margin: 1.5rem 1.5rem 2.5rem;
+    margin: 80px 1.5rem 2.5rem;
     border-radius: 8px;
   }
 
@@ -515,7 +524,7 @@ ul {
 @media screen and (max-width: 480px) {
   .hero-banner {
     height: 60vh;
-    margin: 1.5rem 1rem 2rem;
+    margin: 80px 1rem 2rem;
     border-radius: 5px;
   }
 
@@ -887,7 +896,6 @@ ul {
   .destination-card .rating {
     font-size: 1rem;
   }
-
 
   .carousel-sections h2 {
     font-size: 2rem;
@@ -1901,23 +1909,20 @@ chatbot-body .author {
 }
 
 .footer {
-  min-height: 0vh; /* Ensure the footer takes the full viewport height */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* Align content to the bottom */
   background: linear-gradient(135deg, #0077b6, #1e3a5f);
   color: white;
   font-family: "Raleway", sans-serif;
-  padding: 40px 60px;
+  padding: 40px 60px 20px;
   width: 100%;
   box-sizing: border-box;
+  margin-top: auto;
 }
 
 /* Footer container centered with max-width */
 .footer-container {
   max-width: 1200px;
   width: 100%;
-  margin: auto;
+  margin: 0 auto;
 }
 
 /* Footer Row */
@@ -1946,7 +1951,7 @@ chatbot-body .author {
 
 .footer-section h4 {
   color: #ffffff;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   font-size: 22px;
   text-transform: uppercase;
   font-weight: 700;
@@ -1956,6 +1961,7 @@ chatbot-body .author {
   color: #ffffff;
   font-size: 14px;
   line-height: 1.6;
+  margin-bottom: 10px;
 }
 
 .footer-section ul {
@@ -1974,177 +1980,15 @@ chatbot-body .author {
 }
 
 .footer-section a:hover {
-  text-decoration: underline;
-}
-
-/* Social Media & Newsletter */
-.social-media .social-icons {
-  display: flex;
-  gap: 10px;
-}
-
-.social-media .social-icons a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-  font-size: 24px;
-  text-decoration: none;
-  color: white;
-  border-radius: 5px;
-  transition: all 0.3s ease-in-out;
-  border: 1px solid;
-}
-
-  }
-
-  .chatbot-button {
-    bottom: 60px;
-    right: 10px;
-    width: 50px;
-    height: 50px;
-    font-size: 20px;
-  }
-
-  .back-to-top-btn {
-    bottom: 10px;
-    right: 10px;
-    padding: 10px 16px;
-    font-size: 14px;
-  }
-
-  .chatbot-body {
-    height: 300px;
-  }
-
-  .chat-input input {
-    font-size: 14px;
-    padding: 10px;
-  }
-
-  .chat-input button {
-    padding: 8px 12px;
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .chatbot-modal {
-    width: 90%;
-    bottom: 50px;
-    right: 5%;
-  }
-
-  .chatbot-button {
-    bottom: 50px;
-    right: 10px;
-    width: 45px;
-    height: 45px;
-    font-size: 18px;
-  }
-
-  .back-to-top-btn {
-    bottom: 8px;
-    right: 8px;
-    padding: 8px 14px;
-    font-size: 12px;
-  }
-
-  .chatbot-body {
-    height: 280px;
-  }
-
-  .chat-input input {
-    font-size: 13px;
-    padding: 8px;
-  }
-
-  .chat-input button {
-    padding: 7px 10px;
-    font-size: 12px;
-  }
-
-  .close-chatbot {
-    font-size: 20px;
-  }
-}
-
-.footer {
-  min-height: 0vh; /* Ensure the footer takes the full viewport height */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* Align content to the bottom */
-  background: linear-gradient(135deg, #0077b6, #1e3a5f);
-  color: white;
-  font-family: "Raleway", sans-serif;
-  padding: 40px 60px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* Footer container centered with max-width */
-.footer-container {
-  max-width: 1200px;
-  width: 100%;
-  margin: auto;
-}
-
-/* Footer Row */
-.footer-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-/* Footer Section */
-.footer-section {
-  flex: 1;
-  min-width: 250px;
-  margin-bottom: 20px;
-}
-
-.footer-title {
-  font-size: 2rem;
-  font-weight: 600;
-}
-
-.footer-section h3:hover {
-  transform: scale(1.1);
-}
-
-.footer-section h4 {
   color: #ffffff;
-  margin-bottom: 5px;
-  font-size: 22px;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-.footer-section p {
-  color: #ffffff;
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-section ul li {
-  margin: 8px 0;
-}
-
-.footer-section a {
-  color: #ccc;
   text-decoration: none;
-  transition: color 0.3s;
 }
 
-.footer-section a:hover {
-  text-decoration: underline;
+.footer-section ul li a:hover {
+  color: #ffffff;
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 /* Social Media & Newsletter */
@@ -2170,6 +2014,7 @@ chatbot-body .author {
 .social-media .social-icons a:hover {
   background: #00b894;
   color: #132441;
+  transform: translateY(-3px);
 }
 
 /* Newsletter */
@@ -2204,34 +2049,13 @@ chatbot-body .author {
   background-color: #008e72;
 }
 
-
-.newsletter input:hover {
-  border-color: #00b894;
-}
-
-.footer-newsletter-btn {
-  padding: 8px 15px;
-  background-color: #00b894;
-  border: none;
-  border-radius: 4px;
-  color: #132441;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.footer-newsletter-btn:hover {
-  background-color: #008e72;
-}
-
 /* Footer Bottom */
 .footer-bottom {
   text-align: center;
+  padding: 20px 0 10px;
   margin-top: 20px;
-  padding-top: 15px;
-  border-top: 1px solid white;
-  position: relative;
-  margin-bottom: 0;
-  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 /* Footer Bottom Links */
@@ -2239,73 +2063,23 @@ chatbot-body .author {
   color: #00b894;
   text-decoration: none;
   transition: color 0.3s;
+  font-weight: bold;
 }
 
 .footer-bottom a:hover {
   text-decoration: underline;
+  color: #fff;
 }
 
 #language-select {
   width: 100%;
   padding: 8px;
-  border: 2px solid #0056b3;
+  border: 2px solid #00b894;
   border-radius: 5px;
   margin-top: 10px;
   cursor: pointer;
-}
-
-.footer-bottom {
-  border-top: 2px solid #0056b3;
-  padding: 15px;
-  margin-top: 20px;
-  background: #f4f4f4;
-}
-
-.footer-bottom a {
-  color: #0056b3;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-.footer-bottom a:hover {
-  text-decoration: underline;
-}
-
-#language-select {
-  width: 100%;
-  padding: 8px;
-  border: 2px solid #0056b3;
-  border-radius: 5px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.footer-bottom a {
-  color: #f4f4f4;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-.footer-bottom a:hover {
-  text-decoration: underline;
-  color: rgb(48, 10, 237);
-}
-
-.footer-section ul li a:hover {
-  color: #00b894;
-  transform: translateX(5px);
-  text-decoration: underline;
-}
-
-  color: rgb(48, 10, 237);
-}
-
-.footer-section ul li a:hover {
-  color: #00b894;
-  transform: translateX(5px);
-  text-decoration: underline;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
 }
 
 .goog-te-banner-frame {
@@ -2323,6 +2097,7 @@ chatbot-body .author {
 .goog-te-gadget span {
   display: none !important;
 }
+
 @keyframes fadeInFooter {
   from {
     transform: translateY(50px);
@@ -2776,8 +2551,8 @@ body {
 
 .blog-post:hover {
   transform: translateY(-5px);
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 .blog-post h3 {
   font-family: "Uncial Antiqua", serif;
@@ -2836,7 +2611,6 @@ body {
   background: #013e7e;
   transform: scale(1.05);
 }
-
 
 .blog-container {
   display: flex;
@@ -2908,135 +2682,141 @@ body {
 }
 
 .blog-post {
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.4s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.4s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(130deg, #0077cc, #00c6ff);
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background-size: 300% 300%;
+  animation: borderFlow 3s linear infinite;
+  border-radius: 18px;
+}
+
+.blog-post:hover::before {
+  opacity: 1;
+}
+
+.blog-post:hover {
+  transform: scale(1.01); /* Subtle scale */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes borderFlow {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  .blog-post::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(130deg, #0077cc, #00c6ff);
-    z-index: 0;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    background-size: 300% 300%;
-    animation: borderFlow 3s linear infinite;
-    border-radius: 18px;
+  50% {
+    background-position: 100% 50%;
   }
-  
-  .blog-post:hover::before {
-    opacity: 1;
+  100% {
+    background-position: 0% 50%;
   }
-  
-  .blog-post:hover {
-    transform: scale(1.01); /* Subtle scale */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-  }
-  
-  @keyframes borderFlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  
-  .blog-post * {
-    position: relative;
-    z-index: 1;
-  }
-  
-  .image-overlay-wrapper {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-  }
-  
-  .image-overlay-wrapper img {
-    width: 100%;
-    display: block;
-    border-radius: 12px;
-    transition: transform 0.3s ease;
-  }
-  
-  .image-overlay-wrapper:hover img {
-    transform: scale(1.03); /* Reduced scale */
-  }
-  
-  .image-hover-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 12px;
-  }
-  
-  .image-overlay-wrapper:hover .image-hover-overlay {
-    opacity: 1;
-  }
-  
-  .blog-post h3 {
-    font-size: 1.2rem;
-    color: #222;
-    margin: 0;
-    transition: color 0.3s ease;
-  }
-  
-  .blog-post:hover h3 {
-    color: #fff;
-  }
-  
-  .blog-post p {
-    font-size: 0.95rem;
-    color: #555;
-    transition: color 0.3s ease-in-out;
-  }
-  
-  .blog-post:hover p {
-    color: #e0e0e0;
-  }
-  
+}
+
+.blog-post * {
+  position: relative;
+  z-index: 1;
+}
+
+.image-overlay-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.image-overlay-wrapper img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.image-overlay-wrapper:hover img {
+  transform: scale(1.03); /* Reduced scale */
+}
+
+.image-hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 12px;
+}
+
+.image-overlay-wrapper:hover .image-hover-overlay {
+  opacity: 1;
+}
+
+.blog-post h3 {
+  font-size: 1.2rem;
+  color: #222;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.blog-post:hover h3 {
+  color: #fff;
+}
+
+.blog-post p {
+  font-size: 0.95rem;
+  color: #555;
+  transition: color 0.3s ease-in-out;
+}
+
+.blog-post:hover p {
+  color: #e0e0e0;
+}
+
 /* Read More button default style */
 .read-more1 {
-    margin-top: auto;
-    align-self: flex-start;
-    padding: 8px 16px;
-    background-color: #005f73;  /* Default blue */
-    color: #fff;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    z-index: 2;
-    position: relative;
-  }
-  
-  /* On card hover, change button to white with blue text */
-  .blog-post:hover .read-more1 {
-    background-color: #ffffff;
-    color: #0077cc;
-  }
-  
-  /* When hovering the button itself */
-  .read-more1:hover {
-    background-color: #003f4f;  /* Darker blue */
-    color: #fff;
-  }
-  
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 8px 16px;
+  background-color: #005f73; /* Default blue */
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  z-index: 2;
+  position: relative;
+}
+
+/* On card hover, change button to white with blue text */
+.blog-post:hover .read-more1 {
+  background-color: #ffffff;
+  color: #0077cc;
+}
+
+/* When hovering the button itself */
+.read-more1:hover {
+  background-color: #003f4f; /* Darker blue */
+  color: #fff;
+}
+
 .tabs {
   display: flex;
   justify-content: center;
