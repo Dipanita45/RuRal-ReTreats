@@ -293,7 +293,7 @@
               <li><a href="about.html">About Us</a></li>
               <li><a href="services.html">Services</a></li>
               <li><a href="homestays.html">Hotels & Homestays</a></li>
-              <li><a href="#blog-highlights">Travel Guides</a></li>
+              <li><a href="blog.html">Travel Guides</a></li>
               <li><a href="faq.html">FAQs</a></li>
               <li><a href="contact.html">Contact Us</a></li>
             </ul>
@@ -350,13 +350,13 @@
               <input
                 type="email"
                 placeholder="Enter your email"
-                id="newsletter-email"
+                id="footer-newsletter-email"
                 required
               />
               <button
                 type="submit"
                 class="footer-newsletter-btn"
-                onclick="subscribeNewsletter()"
+                onclick="subscribeNewsletterFooter()"
               >
                 <b>Subscribe</b>
               </button>
@@ -388,9 +388,7 @@
         </div>
         <div class="chatbot-body">
           <div id="chatMessages" class="chat-messages"></div>
-          <div id="typingIndicator" class="typing-indicator">
-            🤖 Bot is typing...
-          </div>
+          <div id="typingIndicator" class="typing-indicator"></div>
         </div>
         <div class="chat-input">
           <input
@@ -411,8 +409,7 @@
       </div>
     </div>
 
-    <script defer src="./JS/script.js"></script>
-    <script defer src="./JS/splash.js"></script>
+    <script defer src="./JS/blog.js"></script>
     <script defer src="./JS/navbar.js"></script>
   </body>
 </html>

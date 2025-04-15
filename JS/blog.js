@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  emailjs.init("ZhgpiL0kX2Dy-IrNa");
+    emailjs.init("ZhgpiL0kX2Dy-IrNa");  
 
   // Initialize blog posts
   if (document.getElementById("blog-container")) {
@@ -10,18 +10,18 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function subscribeNewsletter() {
-  let email = document.getElementById("newsletter-email").value.trim();
-  if (email === "") {
-    alert("⚠️ Please enter a valid email!");
-    return;
-  }
-  if (!validateEmail(email)) {
-    alert("❌ Invalid Email! Please enter a valid email.");
-    return;
-  }
-  sendNewsletterEmail(email);
-  showConfirmationMessage(email);
-  document.getElementById("newsletter-email").value = "";
+    let email = document.getElementById("newsletter-email").value.trim();
+    if (email === "") {
+        alert("⚠️ Please enter a valid email!");
+        return;
+    }
+    if (!validateEmail(email)) {
+        alert("❌ Invalid Email! Please enter a valid email.");
+        return;
+    }
+    sendNewsletterEmail(email);
+    showConfirmationMessage(email);
+    document.getElementById("newsletter-email").value = "";
 }
 
 function subscribeNewsletterFooter() {
@@ -40,31 +40,31 @@ function subscribeNewsletterFooter() {
 }
 
 function validateEmail(email) {
-  const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  return re.test(email);
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(email);
 }
 
 function sendNewsletterEmail(email) {
-  let templateParams = {
-    user_email: email,
-    to_email: email,
-    subject: "🌟 Welcome to Our Travel Newsletter!",
+    let templateParams = {
+        user_email: email,
+        to_email: email,  
+        subject: "🌟 Welcome to Our Travel Newsletter!",
     message: `Hi there! 🎉\n\nThank you for subscribing to our exclusive travel newsletter! ✈️🌎\n\nYou'll receive the latest travel deals, destination tips, and exciting offers. 🏖️\n\nClick the link below to complete your registration:\n\n🔗 [Complete Registration](#)\n\nHappy Travels! 🚀`,
-  };
+    };
   emailjs
     .send("service_n3pxpvu", "template_b6o5dqb", templateParams)
     .then((response) => {
-      console.log("✅ Email sent successfully!", response);
-    })
+            console.log("✅ Email sent successfully!", response);
+        })
     .catch((error) => {
-      console.error("❌ Email sending failed:", error);
-    });
+            console.error("❌ Email sending failed:", error);
+        });
 }
 
 function showConfirmationMessage(email) {
-  let confirmationBox = document.createElement("div");
-  confirmationBox.classList.add("newsletter-confirmation");
-  confirmationBox.innerHTML = `
+    let confirmationBox = document.createElement("div");
+    confirmationBox.classList.add("newsletter-confirmation");
+    confirmationBox.innerHTML = `
         <div class="newsletter-popup">
             <h2>🎉 Subscription Confirmed!</h2>
             <p>Dear <b>${email}</b>, thank you for subscribing!<br>
@@ -73,14 +73,14 @@ function showConfirmationMessage(email) {
             <button onclick="closeConfirmation()">OK</button>
         </div>
     `;
-  document.body.appendChild(confirmationBox);
+    document.body.appendChild(confirmationBox);
 }
 
 function closeConfirmation() {
-  let confirmationBox = document.querySelector(".newsletter-confirmation");
-  if (confirmationBox) {
-    confirmationBox.remove();
-  }
+    let confirmationBox = document.querySelector(".newsletter-confirmation");
+    if (confirmationBox) {
+        confirmationBox.remove();
+    }
 }
 
 // Blog functionality
@@ -372,14 +372,14 @@ function setupBlogSearch() {
 }
 
 function loadGoogleTranslate() {
-  if (!window.google || !window.google.translate) {
-    let script = document.createElement("script");
+    if (!window.google || !window.google.translate) {
+        let script = document.createElement("script");
     script.src =
       "https://translate.google.com/translate_a/element.js?cb=googleTranslateInit";
-    document.body.appendChild(script);
-  } else {
-    googleTranslateInit();
-  }
+        document.body.appendChild(script);
+    } else {
+        googleTranslateInit();
+    }
 }
 
 function googleTranslateInit() {
@@ -390,18 +390,18 @@ function googleTranslateInit() {
     },
     "google_translate_element"
   );
-  setTimeout(fixGoogleTranslateStyles, 1000);
+    setTimeout(fixGoogleTranslateStyles, 1000);
 }
 
 function changeLanguage(lang) {
-  let googleTranslateDropdown = document.querySelector(".goog-te-combo");
-  if (googleTranslateDropdown) {
-    googleTranslateDropdown.value = lang;
-    googleTranslateDropdown.dispatchEvent(new Event("change"));
-    setTimeout(fixGoogleTranslateStyles, 1000);
-  } else {
-    console.error("Google Translate dropdown not found!");
-  }
+    let googleTranslateDropdown = document.querySelector(".goog-te-combo");
+    if (googleTranslateDropdown) {
+        googleTranslateDropdown.value = lang;
+        googleTranslateDropdown.dispatchEvent(new Event("change"));
+        setTimeout(fixGoogleTranslateStyles, 1000);
+    } else {
+        console.error("Google Translate dropdown not found!");
+    }
 }
 
 document
@@ -409,14 +409,14 @@ document
   .addEventListener("change", function () {
     let selectedLang = this.value;
     setTimeout(() => changeLanguage(selectedLang), 500);
-  });
+});
 
 function fixGoogleTranslateStyles() {
   document.querySelectorAll("*").forEach((element) => {
-    element.style.fontSize = "";
-    element.style.lineHeight = "";
-    element.style.letterSpacing = "";
-  });
+        element.style.fontSize = ""; 
+        element.style.lineHeight = ""; 
+        element.style.letterSpacing = ""; 
+    });
 }
 
 window.addEventListener("load", loadGoogleTranslate);
@@ -437,61 +437,61 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.querySelectorAll(".faq-question").forEach((button) => {
-  button.addEventListener("click", () => {
-    const answer = button.nextElementSibling;
-    answer.style.display = answer.style.display === "block" ? "none" : "block";
-  });
+    button.addEventListener("click", () => {
+        const answer = button.nextElementSibling;
+        answer.style.display = answer.style.display === "block" ? "none" : "block";
+    });
 });
 
 function filterFAQs() {
-  let searchInput = document.getElementById("faq-search").value.toLowerCase();
+    let searchInput = document.getElementById("faq-search").value.toLowerCase();
   document.querySelectorAll(".faq").forEach((faq) => {
-    let text = faq.innerText.toLowerCase();
-    faq.style.display = text.includes(searchInput) ? "block" : "none";
-  });
+        let text = faq.innerText.toLowerCase();
+        faq.style.display = text.includes(searchInput) ? "block" : "none";
+    });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  const menuToggle = document.getElementById("menu-toggle");
-  const menuClose = document.getElementById("menu-close");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const navLinks = document.querySelectorAll(".mobile-menu ul li a");
-  const navbar = document.querySelector(".navbar");
-  menuToggle.addEventListener("click", () => {
-    mobileMenu.classList.add("active");
-  });
-  menuClose.addEventListener("click", () => {
-    mobileMenu.classList.remove("active");
-  });
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileMenu.classList.remove("active");
+    const menuToggle = document.getElementById("menu-toggle");
+    const menuClose = document.getElementById("menu-close");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const navLinks = document.querySelectorAll(".mobile-menu ul li a");
+    const navbar = document.querySelector(".navbar");
+    menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.add("active");
     });
-  });
-  window.addEventListener("scroll", function () {
-    if (window.scrollY > 50) {
-      navbar.classList.add("sticky");
-    } else {
-      navbar.classList.remove("sticky");
-    }
-  });
+    menuClose.addEventListener("click", () => {
+        mobileMenu.classList.remove("active");
+    });
+  navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+            mobileMenu.classList.remove("active");
+        });
+    });
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 50) {
+            navbar.classList.add("sticky");
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    });
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const searchInput = document.getElementById("search-input");
-  const searchBtn = document.querySelector(".search-bar button");
-  const mobileSearchInput = document.getElementById("mobile-search-input");
-  const mobileSearchBtn = document.querySelector(".mobile-search-bar button");
-  function handleSearch(query) {
-    query = query.trim().toLowerCase();
-    const pages = {
+    const searchInput = document.getElementById("search-input");
+    const searchBtn = document.querySelector(".search-bar button");
+    const mobileSearchInput = document.getElementById("mobile-search-input");
+    const mobileSearchBtn = document.querySelector(".mobile-search-bar button");
+    function handleSearch(query) {
+        query = query.trim().toLowerCase();
+        const pages = {
       home: "../index.html",
       services: "../services.html",
       homestays: "../homestays.html",
       faq: "../faq.html",
       contact: "../contact.html",
-      "privacy policy": "../pp.html",
-      "terms and condition": "../t&c.html",
+            "privacy policy": "../pp.html",
+            "terms and condition": "../t&c.html",
       service: "../services.html",
       homestay: "../homestays.html",
       faqs: "../faq.html",
@@ -501,55 +501,55 @@ document.addEventListener("DOMContentLoaded", function () {
       Adventures: "../Adventure.html",
       pp: "../pp.html",
       "t&c": "../t&c.html",
-    };
-    if (pages[query]) {
-      window.location.href = pages[query];
-    } else {
-      alert("No results found for: " + query);
+        };
+        if (pages[query]) {
+            window.location.href = pages[query];
+        } else {
+            alert("No results found for: " + query);
+        }
     }
-  }
-  searchBtn.addEventListener("click", function () {
-    if (searchInput.value.trim() !== "") {
-      handleSearch(searchInput.value);
-    }
-  });
-  mobileSearchBtn.addEventListener("click", function () {
-    if (mobileSearchInput.value.trim() !== "") {
-      handleSearch(mobileSearchInput.value);
-    }
-  });
-  searchInput.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      handleSearch(searchInput.value);
-    }
-  });
-  mobileSearchInput.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      handleSearch(mobileSearchInput.value);
-    }
-  });
+    searchBtn.addEventListener("click", function () {
+        if (searchInput.value.trim() !== "") {
+            handleSearch(searchInput.value);
+        }
+    });
+    mobileSearchBtn.addEventListener("click", function () {
+        if (mobileSearchInput.value.trim() !== "") {
+            handleSearch(mobileSearchInput.value);
+        }
+    });
+    searchInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            handleSearch(searchInput.value);
+        }
+    });
+    mobileSearchInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            handleSearch(mobileSearchInput.value);
+        }
+    });
 });
 
 document.addEventListener("DOMContentLoaded", function () {
   const text =
     "India is home to some of the most beautiful and diverse trekking trails, ranging from the snow-covered peaks of the Himalayas to the lush green Western Ghats. Whether you're an experienced trekker or a beginner, there's a trail for everyone. Here are some of the top hiking trails that promise adventure, scenic beauty, and an unforgettable experience.";
 
-  let index = 0;
-  const introElement = document.querySelector(".intro");
-  introElement.innerHTML = ""; // Clear initial text
+    let index = 0;
+    const introElement = document.querySelector(".intro");
+    introElement.innerHTML = ""; // Clear initial text
 
-  function typeEffect() {
-    if (index < text.length) {
-      introElement.innerHTML += text.charAt(index);
-      introElement.classList.add("typing");
-      index++;
-      setTimeout(typeEffect, 30); // Adjust speed here (30ms per letter)
-    } else {
-      introElement.classList.remove("typing");
+    function typeEffect() {
+        if (index < text.length) {
+            introElement.innerHTML += text.charAt(index);
+            introElement.classList.add("typing");
+            index++;
+            setTimeout(typeEffect, 30); // Adjust speed here (30ms per letter)
+        } else {
+            introElement.classList.remove("typing");
+        }
     }
-  }
 
-  setTimeout(typeEffect, 500); // Delay before typing starts
+    setTimeout(typeEffect, 500); // Delay before typing starts
 });
